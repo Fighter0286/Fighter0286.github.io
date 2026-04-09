@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheap AI API · DeepSeek Powered</title>
-    <!-- Google 验证代码 -->
+   <!-- Google 验证代码 -->
     <meta name="google-site-verification" content="qP5In8H3Pge3cR682hfQ1z9xGiOeYEgH0DnklN2AcSk" />
     <style>
         * {
@@ -16,22 +16,192 @@
 
         body {
             min-height: 100vh;
-            /* 国旗红底 + 五角星背景 */
-            background: #DE2910; /* 国旗红 */
-            background-image: 
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23FFDE00' d='M50 0L55 30L85 30L60 45L70 75L50 55L30 75L40 45L15 30L45 30Z'/%3E%3C/svg%3E"),
-                linear-gradient(#DE2910, #DE2910);
-            background-repeat: space;
-            background-size: 80px 80px, 100% 100%;
-            background-position: center;
+            /* 红粉蓝渐变背景 + 轻微流动动画 */
+            background: linear-gradient(135deg, #DE2910 0%, #FF69B4 50%, #1E90FF 100%);
+            background-size: 200% 200%; /* 放大渐变区域用于动画 */
+            animation: gradientFlow 15s ease infinite; /* 渐变流动动画 */
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem 1rem;
             color: #000;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* 主容器：参考图二的卡片样式，更大气 */
+        /* 渐变背景流动动画 */
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 星星点缀：新增漂浮+旋转动画 */
+        body::before,
+        body::after,
+        body .star-1,
+        body .star-2,
+        body .star-3,
+        body .star-4,
+        body .star-5,
+        body .star-6,
+        body .star-7,
+        body .star-8,
+        body .star-9,
+        body .star-10,
+        body .star-11,
+        body .star-12,
+        body .star-13 {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FFDE00; /* 黄色星星 */
+            clip-path: polygon(
+                50% 0%, 
+                61% 35%, 
+                98% 35%, 
+                68% 57%, 
+                79% 91%, 
+                50% 70%, 
+                21% 91%, 
+                32% 57%, 
+                2% 35%, 
+                39% 35%
+            );
+            opacity: 0.8;
+            z-index: 0;
+            /* 星星漂浮+旋转动画（每个星星延迟不同，更自然） */
+            animation: starFloat 8s ease-in-out infinite;
+        }
+
+        /* 星星漂浮旋转动画 */
+        @keyframes starFloat {
+            0% { 
+                transform: translateY(0) rotate(0deg); 
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(-15px) rotate(180deg); 
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(0) rotate(360deg); 
+                opacity: 0.8;
+            }
+        }
+
+        /* 原有7颗星星（添加不同动画延迟） */
+        body::before {
+            top: 10%;
+            left: 15%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 0s; /* 无延迟 */
+        }
+        body::after {
+            top: 15%;
+            right: 12%;
+            width: 18px;
+            height: 18px;
+            animation-delay: 0.5s; /* 延迟0.5s */
+        }
+        body .star-1 {
+            bottom: 10%;
+            left: 20%;
+            width: 12px;
+            height: 12px;
+            animation-delay: 1s;
+        }
+        body .star-2 {
+            bottom: 15%;
+            right: 18%;
+            width: 16px;
+            height: 16px;
+            animation-delay: 1.5s;
+        }
+        body .star-3 {
+            top: 45%;
+            left: 8%;
+            width: 10px;
+            height: 10px;
+            animation-delay: 2s;
+        }
+        body .star-4 {
+            top: 55%;
+            right: 10%;
+            width: 14px;
+            height: 14px;
+            animation-delay: 2.5s;
+        }
+        body .star-5 {
+            bottom: 30%;
+            left: 45%;
+            width: 13px;
+            height: 13px;
+            animation-delay: 3s;
+        }
+
+        /* 新增8颗星星（不同动画延迟） */
+        body .star-6 {
+            top: 25%;
+            left: 8%;
+            width: 9px;
+            height: 9px;
+            animation-delay: 0.2s;
+        }
+        body .star-7 {
+            top: 30%;
+            right: 20%;
+            width: 11px;
+            height: 11px;
+            animation-delay: 0.7s;
+        }
+        body .star-8 {
+            top: 8%;
+            left: 40%;
+            width: 17px;
+            height: 17px;
+            animation-delay: 1.2s;
+        }
+        body .star-9 {
+            bottom: 20%;
+            right: 35%;
+            width: 14px;
+            height: 14px;
+            animation-delay: 1.7s;
+        }
+        body .star-10 {
+            top: 70%;
+            left: 12%;
+            width: 8px;
+            height: 8px;
+            animation-delay: 2.2s;
+        }
+        body .star-11 {
+            top: 20%;
+            right: 30%;
+            width: 10px;
+            height: 10px;
+            animation-delay: 2.7s;
+        }
+        body .star-12 {
+            bottom: 8%;
+            left: 35%;
+            width: 16px;
+            height: 16px;
+            animation-delay: 3.2s;
+        }
+        body .star-13 {
+            bottom: 25%;
+            right: 25%;
+            width: 12px;
+            height: 12px;
+            animation-delay: 3.7s;
+        }
+
+        /* 主容器：轻微入场动画 */
         .container {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -41,32 +211,37 @@
             border: 1px solid rgba(255, 255, 255, 0.4);
             max-width: 800px;
             width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            /* 容器入场动画 */
+            animation: containerFadeIn 1.5s ease-out;
         }
 
-        /* 标题+Base URL 横向行 */
-        .header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+        /* 容器淡入+上移动画 */
+        @keyframes containerFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
+        /* 标题 */
         .main-title {
             font-size: 2.5rem;
             font-weight: 800;
-            color: #DE2910; /* 国旗红标题 */
+            color: #DE2910;
             letter-spacing: 1px;
-        }
-
-        .base-url-box {
-            background: #FFF8E1; /* 浅黄背景 */
-            padding: 0.8rem 1.2rem;
-            border-radius: 12px;
-            font-size: 1rem;
-            color: #333;
-            border: 1px solid #FFDE00; /* 黄色边框 */
+            margin-bottom: 1rem;
+            /* 标题文字渐变 */
+            background: linear-gradient(90deg, #DE2910, #FF69B4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         /* 副标题 */
@@ -77,7 +252,7 @@
             font-weight: 500;
         }
 
-        /* 价格套餐区：参考图二的卡片式布局 */
+        /* 价格套餐区 */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -85,25 +260,50 @@
             margin-bottom: 3rem;
         }
 
+        /* 卡片：增强悬停效果（放大+阴影加深） */
         .pricing-card {
             background: #FFF;
-            border: 2px solid #FFDE00; /* 黄色边框 */
+            border: 2px solid #FFDE00;
             border-radius: 16px;
             padding: 1.8rem 1.5rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease; /* 延长过渡时间更丝滑 */
+            /* 卡片轻微上浮动画 */
+            animation: cardFloat 3s ease-in-out infinite alternate;
         }
 
+        /* 卡片轻微上浮动画 */
+        @keyframes cardFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
+        /* 不同卡片延迟动画，错开节奏 */
+        .pricing-card:nth-child(1) { animation-delay: 0s; }
+        .pricing-card:nth-child(2) { animation-delay: 0.5s; }
+        .pricing-card:nth-child(3) { animation-delay: 1s; }
+
+        /* 悬停时放大+阴影加深 */
         .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px) scale(1.03); /* 上移+放大 */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: #DE2910; /* 边框变红 */
         }
 
         .price {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #DE2910; /* 国旗红价格 */
+            color: #DE2910;
             margin-bottom: 1rem;
+            /* 价格数字跳动效果 */
+            animation: pricePulse 2s ease-in-out infinite;
+        }
+
+        /* 价格轻微跳动 */
+        @keyframes pricePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .tokens {
@@ -112,10 +312,11 @@
             margin-bottom: 1.5rem;
         }
 
-        /* 购买按钮：国旗红+黄色描边 */
+        /* 购买按钮：呼吸+渐变背景动画 */
         .buy-btn {
-            background: #DE2910;
-            color: #FFDE00; /* 黄色文字 */
+            background: linear-gradient(90deg, #DE2910, #FF4500); /* 按钮渐变 */
+            background-size: 200% 200%;
+            color: #FFDE00;
             border: 2px solid #FFDE00;
             padding: 0.8rem 1.8rem;
             font-size: 1.1rem;
@@ -124,15 +325,33 @@
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
+            /* 按钮呼吸+渐变流动 */
+            animation: btnBreath 3s ease infinite, btnGradient 4s ease infinite;
+        }
+
+        /* 按钮呼吸动画 */
+        @keyframes btnBreath {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* 按钮渐变流动 */
+        @keyframes btnGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .buy-btn:hover {
             background: #FFDE00;
             color: #DE2910;
             border-color: #DE2910;
+            animation: none; /* 悬停时停止动画，突出交互 */
+            transform: scale(1.08);
         }
 
-        /* API 信息区 */
+        /* API 信息区：hover 高亮 */
         .api-info {
             background: #FFF8E1;
             padding: 1.5rem;
@@ -141,6 +360,14 @@
             font-size: 1rem;
             line-height: 1.7;
             border: 1px solid #FFDE00;
+            transition: all 0.3s ease;
+        }
+
+        .api-info:hover {
+            background: #FFF;
+            border-color: #DE2910;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .api-info p {
@@ -153,6 +380,14 @@
             color: #666;
             text-align: center;
             margin-top: 1rem;
+            /* 缓慢闪烁提示 */
+            animation: contactFlicker 4s ease-in-out infinite;
+        }
+
+        @keyframes contactFlicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
         }
 
         /* 移动端适配 */
@@ -160,30 +395,51 @@
             .container {
                 padding: 2.5rem 2rem;
             }
-            .header-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
             .main-title {
                 font-size: 2rem;
             }
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
+            /* 移动端缩小星星+减慢动画 */
+            body::before, body::after, 
+            body .star-1, body .star-2, body .star-3, body .star-4, body .star-5,
+            body .star-6, body .star-7, body .star-8, body .star-9, body .star-10,
+            body .star-11, body .star-12, body .star-13 {
+                width: 8px;
+                height: 8px;
+                animation-duration: 10s; /* 减慢星星动画 */
+            }
+            /* 移动端关闭部分动画，提升性能 */
+            .pricing-card {
+                animation: none;
+            }
+            .price {
+                animation: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 标题+Base URL 横向行 -->
-        <div class="header-row">
-            <h1 class="main-title">Cheap AI API · DeepSeek Powered</h1>
-            <div class="base-url-box">Base URL: https://crimson-brook-ddbc.zhangxuhui0815.workers.dev/v1</div>
-        </div>
+    <!-- 星星占位元素 -->
+    <div class="star-1"></div>
+    <div class="star-2"></div>
+    <div class="star-3"></div>
+    <div class="star-4"></div>
+    <div class="star-5"></div>
+    <div class="star-6"></div>
+    <div class="star-7"></div>
+    <div class="star-8"></div>
+    <div class="star-9"></div>
+    <div class="star-10"></div>
+    <div class="star-11"></div>
+    <div class="star-12"></div>
+    <div class="star-13"></div>
 
+    <div class="container">
+        <h1 class="main-title">Cheap AI API · DeepSeek Powered</h1>
         <div class="sub-title">High Performance AI API | 50% Lower Cost Than OpenAI</div>
 
-        <!-- 价格+按钮合并卡片 -->
         <div class="pricing-grid">
             <div class="pricing-card">
                 <div class="price">$5.00</div>
@@ -208,18 +464,16 @@
             </div>
         </div>
 
-        <!-- API 详细信息 -->
         <div class="api-info">
             <p><strong>API Usage Example:</strong></p>
+            <p>Base URL: https://crimson-brook-ddbc.zhangxuhui0815.workers.dev/v1</p>
             <p>Model: deepseek-chat</p>
             <p>Support chat completions & embeddings.</p>
         </div>
 
-        <!-- 联系方式 -->
         <div class="contact">Contact: zhangxuhui0815@gmail.com</div>
     </div>
 
-    <!-- Lemon Squeezy 按钮脚本 -->
     <script src="https://api.lemonsqueezy.com/button/script.js"></script>
 </body>
 </html>
