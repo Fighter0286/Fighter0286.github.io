@@ -1,27 +1,176 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DeepSeek API Proxy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheap AI API · DeepSeek Powered</title>
+    <!-- Google 验证代码 -->
+    <meta name="google-site-verification" content="WfoBWIId1veRf5hjPMLAIh7vsvA6qCctoFpIEod310Q" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
 
-  <!-- 在这里粘贴 Google 验证代码 -->
- <meta name="google-site-verification" content="WfoBWIld1veRf5hjPMLAIh7vsvA6qCctoFpIEOd3l0Q" />
+        body {
+            min-height: 100vh;
+            /* 保留你原本的渐变背景 */
+            background: linear-gradient(135deg, #ff0000 0%, #9900ff 50%, #0066ff 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            color: #000;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-  <style>
-    body{font-family: sans-serif; max-width: 600px; margin: 4rem auto; padding: 0 20px; background:#111; color:#fff;}
-    .price{font-size: 1.5rem; margin: 1rem 0; color: #fff;}
-    .btn{background:#6200ee; color:white; padding:12px 24px; border-radius:8px; text-decoration:none; display:inline-block;}
-  </style>
+        /* 容器：增加毛玻璃背景 + 圆角 + 阴影，提升质感 */
+        .container {
+            background: rgba(255, 255, 255, 0.85); /* 半透明白色毛玻璃 */
+            backdrop-filter: blur(8px); /* 毛玻璃模糊效果 */
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* 外层阴影 */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* 标题：加大字号 + 加粗 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* 副标题：适中字号，保留原意 */
+        .sub-title {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+        }
+
+        /* 价格列表：优化间距，对齐美观 */
+        .pricing-list {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+        }
+
+        /* API 示例区域：浅灰背景框，突出信息 */
+        .api-info {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .api-info p {
+            margin: 0.3rem 0;
+        }
+
+        /* 购买按钮组：横向排列，优化样式 */
+        .buy-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap; /* 移动端自动换行 */
+            margin-bottom: 2rem;
+        }
+
+        /* 按钮：红色主色调 + 圆角 + 悬停效果 */
+        .buy-btn {
+            background: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 999px; /* 胶囊形状 */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 90px;
+        }
+
+        .buy-btn:hover {
+            background: #cc0000;
+            transform: translateY(-2px); /* 悬停上浮 */
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+        }
+
+        /* 联系方式：小字，灰色，居下 */
+        .contact {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        /* 移动端适配：缩小内边距和字号 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .sub-title {
+                font-size: 1rem;
+            }
+            .pricing-list {
+                font-size: 1.1rem;
+            }
+            .buy-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>DeepSeek API 中转服务</h1>
-  <p>高速稳定、低价可用</p>
+    <div class="container">
+        <h1>Cheap AI API · DeepSeek Powered</h1>
+        <div class="sub-title">High Performance AI API | 50% Lower Cost Than OpenAI</div>
 
-  <div class="price">套餐：$5 / $20 / $38</div>
+        <div class="pricing-list">
+            <div>10,000,000 Tokens — $5.00</div>
+            <div>50,000,000 Tokens — $20.00</div>
+            <div>100,000,000 Tokens — $38.00</div>
+        </div>
 
-  <!-- 在这里粘贴 Lemon Squeezy 按钮 -->
-  <script src="https://api.lemonsqueezy.com/button/script.js"></script>
-  <a href="你的lemon商品链接" class="lemonsqueezy-button btn">立即购买</a>
+        <div class="api-info">
+            <p><strong>API Usage Example:</strong></p>
+            <p>Base URL: https://crimson-brook-ddbc.zhangxuhui0815.workers.dev/v1</p>
+            <p>Model: deepseek-chat</p>
+            <p>Support chat completions & embeddings.</p>
+        </div>
+
+        <div class="buy-buttons">
+            <!-- 替换成你的真实 Lemon Squeezy 链接 -->
+            <a href="你的LemonSqueezy链接_5美元" class="lemonsqueezy-button">
+                <button class="buy-btn">$5 Buy</button>
+            </a>
+            <a href="你的LemonSqueezy链接_20美元" class="lemonsqueezy-button">
+                <button class="buy-btn">$20 Buy</button>
+            </a>
+            <a href="你的LemonSqueezy链接_38美元" class="lemonsqueezy-button">
+                <button class="buy-btn">$38 Buy</button>
+            </a>
+        </div>
+
+        <div class="contact">Contact: zhangxuhui0815@gmail.com</div>
+    </div>
+
+    <!-- Lemon Squeezy 按钮脚本 -->
+    <script src="https://api.lemonsqueezy.com/button/script.js"></script>
 </body>
 </html>
