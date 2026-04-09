@@ -16,157 +16,206 @@
 
         body {
             min-height: 100vh;
-            /* 保留你原本的渐变背景 */
-            background: linear-gradient(135deg, #ff0000 0%, #9900ff 50%, #0066ff 100%);
+            /* 国旗红底 + 五角星背景 */
+            background: #DE2910; /* 国旗红 */
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23FFDE00' d='M50 0L55 30L85 30L60 45L70 75L50 55L30 75L40 45L15 30L45 30Z'/%3E%3C/svg%3E"),
+                linear-gradient(#DE2910, #DE2910);
+            background-repeat: space;
+            background-size: 80px 80px, 100% 100%;
+            background-position: center;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 2rem 1rem;
             color: #000;
-            position: relative;
-            overflow-x: hidden;
         }
 
-        /* 容器：增加毛玻璃背景 + 圆角 + 阴影，提升质感 */
+        /* 主容器：参考图二的卡片样式，更大气 */
         .container {
-            background: rgba(255, 255, 255, 0.85); /* 半透明白色毛玻璃 */
-            backdrop-filter: blur(8px); /* 毛玻璃模糊效果 */
-            padding: 3rem 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* 外层阴影 */
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            text-align: center;
-            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 4rem 3rem;
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            max-width: 800px;
             width: 100%;
         }
 
-        /* 标题：加大字号 + 加粗 */
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            letter-spacing: 0.5px;
-        }
-
-        /* 副标题：适中字号，保留原意 */
-        .sub-title {
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 2.5rem;
-            font-weight: 500;
-        }
-
-        /* 价格列表：优化间距，对齐美观 */
-        .pricing-list {
-            font-size: 1.25rem;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            font-weight: 500;
-        }
-
-        /* API 示例区域：浅灰背景框，突出信息 */
-        .api-info {
-            background: rgba(0, 0, 0, 0.05);
-            padding: 1.2rem;
-            border-radius: 12px;
-            margin-bottom: 2.5rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .api-info p {
-            margin: 0.3rem 0;
-        }
-
-        /* 购买按钮组：横向排列，优化样式 */
-        .buy-buttons {
+        /* 标题+Base URL 横向行 */
+        .header-row {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
             gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap; /* 移动端自动换行 */
-            margin-bottom: 2rem;
         }
 
-        /* 按钮：红色主色调 + 圆角 + 悬停效果 */
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #DE2910; /* 国旗红标题 */
+            letter-spacing: 1px;
+        }
+
+        .base-url-box {
+            background: #FFF8E1; /* 浅黄背景 */
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            color: #333;
+            border: 1px solid #FFDE00; /* 黄色边框 */
+        }
+
+        /* 副标题 */
+        .sub-title {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        /* 价格套餐区：参考图二的卡片式布局 */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: #FFF;
+            border: 2px solid #FFDE00; /* 黄色边框 */
+            border-radius: 16px;
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #DE2910; /* 国旗红价格 */
+            margin-bottom: 1rem;
+        }
+
+        .tokens {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 购买按钮：国旗红+黄色描边 */
         .buy-btn {
-            background: #ff0000;
-            color: #fff;
-            border: none;
-            padding: 0.9rem 2rem;
+            background: #DE2910;
+            color: #FFDE00; /* 黄色文字 */
+            border: 2px solid #FFDE00;
+            padding: 0.8rem 1.8rem;
             font-size: 1.1rem;
             font-weight: 600;
-            border-radius: 999px; /* 胶囊形状 */
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 90px;
+            width: 100%;
         }
 
         .buy-btn:hover {
-            background: #cc0000;
-            transform: translateY(-2px); /* 悬停上浮 */
-            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+            background: #FFDE00;
+            color: #DE2910;
+            border-color: #DE2910;
         }
 
-        /* 联系方式：小字，灰色，居下 */
+        /* API 信息区 */
+        .api-info {
+            background: #FFF8E1;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            border: 1px solid #FFDE00;
+        }
+
+        .api-info p {
+            margin: 0.5rem 0;
+        }
+
+        /* 联系方式 */
         .contact {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #666;
+            text-align: center;
             margin-top: 1rem;
         }
 
-        /* 移动端适配：缩小内边距和字号 */
-        @media (max-width: 480px) {
+        /* 移动端适配 */
+        @media (max-width: 768px) {
             .container {
-                padding: 2rem 1.5rem;
+                padding: 2.5rem 2rem;
             }
-            h1 {
-                font-size: 1.8rem;
+            .header-row {
+                flex-direction: column;
+                align-items: flex-start;
             }
-            .sub-title {
-                font-size: 1rem;
+            .main-title {
+                font-size: 2rem;
             }
-            .pricing-list {
-                font-size: 1.1rem;
-            }
-            .buy-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
+            .pricing-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Cheap AI API · DeepSeek Powered</h1>
-        <div class="sub-title">High Performance AI API | 50% Lower Cost Than OpenAI</div>
-
-        <div class="pricing-list">
-            <div>10,000,000 Tokens — $5.00</div>
-            <div>50,000,000 Tokens — $20.00</div>
-            <div>100,000,000 Tokens — $38.00</div>
+        <!-- 标题+Base URL 横向行 -->
+        <div class="header-row">
+            <h1 class="main-title">Cheap AI API · DeepSeek Powered</h1>
+            <div class="base-url-box">Base URL: https://crimson-brook-ddbc.zhangxuhui0815.workers.dev/v1</div>
         </div>
 
+        <div class="sub-title">High Performance AI API | 50% Lower Cost Than OpenAI</div>
+
+        <!-- 价格+按钮合并卡片 -->
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="price">$5.00</div>
+                <div class="tokens">10,000,000 Tokens</div>
+                <a href="你的LemonSqueezy链接_5美元" class="lemonsqueezy-button">
+                    <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+            <div class="pricing-card">
+                <div class="price">$20.00</div>
+                <div class="tokens">50,000,000 Tokens</div>
+                <a href="你的LemonSqueezy链接_20美元" class="lemonsqueezy-button">
+                    <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+            <div class="pricing-card">
+                <div class="price">$38.00</div>
+                <div class="tokens">100,000,000 Tokens</div>
+                <a href="你的LemonSqueezy链接_38美元" class="lemonsqueezy-button">
+                    <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- API 详细信息 -->
         <div class="api-info">
             <p><strong>API Usage Example:</strong></p>
-            <p>Base URL: https://crimson-brook-ddbc.zhangxuhui0815.workers.dev/v1</p>
             <p>Model: deepseek-chat</p>
             <p>Support chat completions & embeddings.</p>
         </div>
 
-        <div class="buy-buttons">
-            <!-- 替换成你的真实 Lemon Squeezy 链接 -->
-            <a href="你的LemonSqueezy链接_5美元" class="lemonsqueezy-button">
-                <button class="buy-btn">$5 Buy</button>
-            </a>
-            <a href="你的LemonSqueezy链接_20美元" class="lemonsqueezy-button">
-                <button class="buy-btn">$20 Buy</button>
-            </a>
-            <a href="你的LemonSqueezy链接_38美元" class="lemonsqueezy-button">
-                <button class="buy-btn">$38 Buy</button>
-            </a>
-        </div>
-
+        <!-- 联系方式 -->
         <div class="contact">Contact: zhangxuhui0815@gmail.com</div>
     </div>
 
